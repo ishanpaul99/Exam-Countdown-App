@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exam Countdown — track upcoming exams with a real-time countdown.">
+  <title>Exam Countdown</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="exam countdown logo.png">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" id="nav-logo" aria-label="Scroll to Home">
+        <img class="logo-icon" src="exam countdown logo.png" alt="logo">
+        <span class="logo-text">Exam Countdown</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Stay Ahead of Every Exam</h1>
+        <p class="hero-subtitle">Track upcoming exams and know exactly how much time remains.</p>
+        <a href="#dashboard" class="btn btn-primary hero-btn">Go to Dashboard</a>
+      </div>
+      <div class="hero-decoration" aria-hidden="true"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Why Use Exam Countdown?</h2>
+        <div class="features-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⏱️</div>
+            <h3>Live Countdown</h3>
+            <p>Real-time countdown updated every second so you never lose track of time.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📊</div>
+            <h3>Progress Awareness</h3>
+            <p>Instantly know how close your exam is with color-coded status indicators.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📅</div>
+            <h3>Simple Planning</h3>
+            <p>Helps students stay organized and manage preparation time effectively.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+      <div class="container">
+        <h2 class="section-title">Dashboard</h2>
+        <p class="section-subtitle">Set your next exam and start tracking the countdown.</p>
+
+        <!-- Dashboard Input Card -->
+        <div class="dashboard-card">
+          <form id="exam-form" novalidate>
+            <div class="form-row form-row-name">
+              <div class="form-group">
+                <label for="exam-name">Exam Name</label>
+                <input
+                  type="text"
+                  id="exam-name"
+                  name="examName"
+                  placeholder="e.g. Final Mathematics Exam"
+                  autocomplete="off"
+                  maxlength="100"
+                >
+              </div>
+            </div>
+
+            <div class="form-row form-row-datetime">
+              <div class="form-group">
+                <label for="exam-date">Exam Date</label>
+                <input
+                  type="date"
+                  id="exam-date"
+                  name="examDate"
+                >
+              </div>
+              <div class="form-group">
+                <label for="exam-time">Exam Time</label>
+                <input
+                  type="time"
+                  id="exam-time"
+                  name="examTime"
+                >
+              </div>
+            </div>
+
+            <!-- Validation message area -->
+            <div id="validation-message" class="validation-message" role="alert" aria-live="polite"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="start-btn">Start Countdown</button>
+              <button type="button" class="btn btn-secondary" id="reset-btn">Reset Countdown</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Countdown Display Container -->
+        <div class="countdown-container" id="countdown-container">
+          <div class="countdown-header">
+            <h3 class="exam-display-name" id="exam-display-name">—</h3>
+            <div class="exam-display-meta">
+              <div class="exam-meta-item">
+                <span class="exam-meta-label">Date</span>
+                <span class="exam-meta-value" id="exam-display-date">—</span>
+              </div>
+              <div class="exam-meta-item">
+                <span class="exam-meta-label">Time</span>
+                <span class="exam-meta-value" id="exam-display-time">—</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="countdown-heading">Countdown</p>
+
+          <div class="countdown-timer" id="countdown-timer">
+            <div class="time-unit">
+              <span class="time-value" id="days">00</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-unit">
+              <span class="time-value" id="hours">00</span>
+              <span class="time-label">Hours</span>
+            </div>
+            <div class="time-unit">
+              <span class="time-value" id="minutes">00</span>
+              <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-unit">
+              <span class="time-value" id="seconds">00</span>
+              <span class="time-label">Seconds</span>
+            </div>
+          </div>
+
+          <!-- Status Card -->
+          <div class="status-card" id="status-card">
+            <span class="status-text" id="status-text">Set an exam to begin</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <div class="about-card">
+          <p>
+            Exam Countdown is a student productivity tool that helps users monitor upcoming
+            examinations through a clean real-time countdown interface, making exam preparation
+            easier and more organized.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section id="motivation" class="motivation">
+      <div class="container">
+        <div class="motivation-card">
+          <p class="motivation-text">All the best for your exams.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Exam Countdown. Built for students.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
